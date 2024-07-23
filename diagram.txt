@@ -1,0 +1,98 @@
++--------------------+                                         +-------------------+                                     +-------------------+
+|                    |                                         |                   |                                     |                   |
+|      Browser       |                                         |      Server       |                                     |    Google OAuth   |
+|                    |                                         |                   |                                     |      Server       |
++--------------------+                                         +-------------------+                                     +-------------------+
+        |                                                          |                                                        |
+        |    1. User clicks "Log in with Google" link              |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    2. Redirect user to Google OAuth endpoint             |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    3. User authorizes application                        |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    4. Google redirects user to callback URL              |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    5. Server exchanges authorization code for access token|                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |    6. Google returns access token                       |
+        |                                                          |<-------------------------------------------------------|
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    7. Server uses access token to request user info      |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |    8. Google returns user info                          |
+        |                                                          |<-------------------------------------------------------|
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    9. Server sends user info back to browser             |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+Sure! Below is a high-level sequence diagram that illustrates the OAuth 2.0 flow with Google as the OAuth provider:
+
+```plaintext
++--------------------+                                         +-------------------+                                     +-------------------+
+|                    |                                         |                   |                                     |                   |
+|      Browser       |                                         |      Server       |                                     |    Google OAuth   |
+|                    |                                         |                   |                                     |      Server       |
++--------------------+                                         +-------------------+                                     +-------------------+
+        |                                                          |                                                        |
+        |    1. User clicks "Log in with Google" link               |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    2. Redirect user to Google OAuth endpoint             |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    3. User authorizes application                        |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    4. Google redirects user to callback URL              |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    5. Server exchanges authorization code for access token|                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |    6. Google returns access token                       |
+        |                                                          |<-------------------------------------------------------|
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    7. Server uses access token to request user info      |                                                        |
+        |--------------------------------------------------------->|                                                        |
+        |                                                          |                                                        |
+        |                                                          |    8. Google returns user info                          |
+        |                                                          |<-------------------------------------------------------|
+        |                                                          |                                                        |
+        |                                                          |                                                        |
+        |    9. Server sends user info back to browser             |                                                        |
+        |<---------------------------------------------------------|                                                        |
+        |                                                          |                                                        |
+```
+
+### Explanation:
+
+1. **User clicks "Log in with Google" link**: The user initiates the login process by clicking a link on the home page.
+2. **Redirect user to Google OAuth endpoint**: The server responds to the login request by redirecting the user to Google's OAuth 2.0 authorization endpoint.
+3. **User authorizes application**: The user is presented with a Google login page where they can authorize the application to access their profile information.
+4. **Google redirects user to callback URL**: After authorization, Google redirects the user back to the server's callback URL, including an authorization code in the URL parameters.
+5. **Server exchanges authorization code for access token**: The server receives the authorization code and sends a request to Google to exchange this code for an access token.
+6. **Google returns access token**: Google responds with an access token.
+7. **Server uses access token to request user info**: The server uses the access token to make an authenticated request to Google's user info endpoint.
+8. **Google returns user info**: Google responds with the user's profile information.
+9. **Server sends user info back to browser**: The server processes the user info and sends it back to the user's browser, typically displaying it on a web page.
+
+This diagram and explanation provide a clear overview of how OAuth 2.0 authentication works with Google, showing the interactions between the user's browser, your server, and Google's OAuth 2.0 server.
